@@ -6,18 +6,15 @@
 
 #include "LinkedList.hpp"
 
-//using datastruct::linkedlist::LinkedList;
+using datastruct::linkedlist::LinkedList;
 
-TEST(LinkedListTest, Dummy)
+TEST(LinkedListTest, InitTest)
 {
-	ASSERT_TRUE(true);
+	LinkedList<std::string> aStringList;
+	ASSERT_TRUE(aStringList.empty());
+	ASSERT_EQ(size_t(0), aStringList.size());
 }
 
-//TEST(LinkedListTest, InitTest)
-//{
-//	LinkedList<std::string> aStringList;
-//	ASSERT_TRUE(aStringList.empty());
-//}
 //
 //TEST(LinkedListTest, BackInsertShouldIncreaseSize)
 //{
