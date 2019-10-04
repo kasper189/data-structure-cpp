@@ -87,9 +87,6 @@ TEST(LinkedListTest, BasePushAndFrontTail)
   ASSERT_EQ(aStringList.front(), aStringList.tail());
 }
 
-////////////
-
-
 TEST(LinkedListTest, FrontInsertShouldIncreaseSize)
 {
   LinkedList<std::string> aStringList;
@@ -154,4 +151,35 @@ TEST(LinkedListTest, BaseFrontPushAndFrontTail)
   std::string aExpectedString("Test string");
   aStringList.push_front(aExpectedString);
   ASSERT_EQ(aStringList.front(), aStringList.tail());
+}
+
+TEST(LinkedListTest, GetNthElementBase)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_front(10);
+  aList.push_front(1);
+
+  // 1 -> 10 -> 0
+  const int aInt = aList.get_element(size_t(2));
+  ASSERT_EQ(10, aInt);
+}
+
+TEST(LinkedListTest, ShorterListShouldThrow)
+{
+  LinkedList<std::string> aStringList;
+  ASSERT_THROW(aStringList.get_element(size_t(2)), std::runtime_error);
+}
+
+TEST(LinkedListTest, GetNthElement)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(10);
+  aList.push_front(1);
+  aList.push_back(100);
+
+  // 1 -> 0 -> 10 -> 100
+  const int aInt = aList.get_element(size_t(4));
+  ASSERT_EQ(100, aInt);
 }

@@ -51,7 +51,7 @@ namespace datastruct { namespace linkedlist
     /**
      * Gets the iPosition-th element, if exists
      */
-    T& get_element(const uint32_t& iPosition) const;
+    T& get_element(const size_t& iPosition) const;
 
   private:
 
@@ -135,6 +135,22 @@ namespace datastruct { namespace linkedlist
      tmp = tmp->_next;
     }
     return tmp->_data;
+  }
+
+  template<typename T>
+  T& LinkedList<T>::get_element(const size_t& iPosition) const {
+    if(size() < iPosition) {
+      throw std::runtime_error("The list size is smaller");
+    }
+    Node *tmp, *node;
+    tmp = _head;
+    int cnt(0);
+    while(cnt != iPosition && tmp != NULL) {
+      node = tmp;
+      tmp = tmp->_next;
+      ++cnt;
+    }
+    return node->_data;
   }
 
 }}
