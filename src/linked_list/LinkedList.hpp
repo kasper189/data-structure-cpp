@@ -53,6 +53,15 @@ namespace datastruct { namespace linkedlist
      */
     T& get_element(const size_t& iPosition) const;
 
+    typedef bool (* vCmpMethod)(T args);
+    typedef void (* vPushFunction)(T args);
+
+    /**
+     * Fills a list with the elements that satisfy the condition
+     * in the compare method
+     */
+    void select(vCmpMethod compare, LinkedList<T>& ioLList) const;
+
   private:
 
     struct Node
@@ -151,6 +160,18 @@ namespace datastruct { namespace linkedlist
       ++cnt;
     }
     return node->_data;
+  }
+
+  template<typename T>
+  void LinkedList<T>::select(vCmpMethod compare, LinkedList<T>& ioLList) const {
+    Node* tmp;
+    tmp = _head;
+    while(tmp != NULL) {
+      if(compare(tmp->_data)) {
+        ioLList.push_back(tmp->_data);
+      }
+      tmp = tmp->_next;
+    }
   }
 
 }}

@@ -183,3 +183,22 @@ TEST(LinkedListTest, GetNthElement)
   const int aInt = aList.get_element(size_t(4));
   ASSERT_EQ(100, aInt);
 }
+
+bool isSmallerThan(int target)
+{
+  return target < 5;
+}
+
+TEST(LinkedListTest, TraverseAndSelect)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(10);
+  aList.push_front(1);
+  aList.push_back(100);
+  // 1 -> 0 -> 10 -> 100
+
+  LinkedList<int> resultList;
+  aList.select((LinkedList<int>::vCmpMethod) isSmallerThan, resultList);
+  ASSERT_EQ(2, resultList.size());
+}
