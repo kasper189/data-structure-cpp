@@ -62,6 +62,31 @@ namespace datastruct { namespace linkedlist
      */
     void select(vCmpMethod compare, LinkedList<T>& ioLList) const;
 
+    /**
+     * Removes the element at the head of the list, if exists
+     */
+    void pop_front();
+
+    /**
+     * Removes the element at the tail of the list, if exists
+     */
+    void pop_tail();
+
+    /**
+     * Removes the first element matching iData
+     */
+    void pop_element(const T& iData);
+
+    /**
+     * Finds the position of the fist element matching iData, if exists
+     */
+    uint32_t find_position(const T& iData) const;
+
+    /**
+     * Returns true if an element matching iData exists
+     */
+    const bool contains(const T& iData) const;
+
   private:
 
     struct Node
@@ -172,6 +197,31 @@ namespace datastruct { namespace linkedlist
       }
       tmp = tmp->_next;
     }
+  }
+
+  template<typename T>
+  void LinkedList<T>::pop_front() {
+    throw std::runtime_error("Not implemented");
+  }
+
+  template<typename T>
+  void LinkedList<T>::pop_tail() {
+    throw std::runtime_error("Not implemented");
+  }
+
+  template<typename T>
+  void LinkedList<T>::pop_element(const T& iData) {
+    throw std::runtime_error("Not implemented");
+  }
+
+  template<typename T>
+  uint32_t LinkedList<T>::find_position(const T& iData) const {
+    throw std::runtime_error("Not implemented");
+  }
+
+  template<typename T>
+  const bool LinkedList<T>::contains(const T& iData) const {
+    throw std::runtime_error("Not implemented");
   }
 
 }}
