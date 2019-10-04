@@ -202,3 +202,84 @@ TEST(LinkedListTest, TraverseAndSelect)
   aList.select((LinkedList<int>::vCmpMethod) isSmallerThan, resultList);
   ASSERT_EQ(2, resultList.size());
 }
+
+TEST(LinkedListTest, PopFront)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(10);
+
+  ASSERT_EQ(2, aList.size());
+
+  aList.pop_front();
+  ASSERT_EQ(1, aList.size());
+  ASSERT_EQ(10, aList.front());
+}
+
+TEST(LinkedListTest, PopTail)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(10);
+
+  ASSERT_EQ(2, aList.size());
+
+  aList.pop_tail();
+  ASSERT_EQ(1, aList.size());
+  ASSERT_EQ(0, aList.front());
+}
+
+TEST(LinkedListTest, FindPositionBasic)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(10);
+  aList.push_back(3);
+
+  ASSERT_EQ(2, aList.find_position(10));
+}
+
+TEST(LinkedListTest, FindPositionNested)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(10);
+  aList.push_back(3);
+
+  ASSERT_EQ(
+      10,
+      aList.get_element(
+          aList.find_position(10)
+      )
+  );
+}
+
+TEST(LinkedListTest, FindPositionNotFound)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(10);
+  aList.push_back(3);
+
+  ASSERT_EQ(-1, aList.find_position(100));
+}
+
+TEST(LinkedListTest, FoundContains)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(10);
+  aList.push_back(3);
+
+  ASSERT_TRUE(aList.contains(10));
+}
+
+TEST(LinkedListTest, NotFoundContains)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(10);
+  aList.push_back(3);
+
+  ASSERT_FALSE(aList.contains(100));
+}

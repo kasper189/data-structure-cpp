@@ -201,12 +201,31 @@ namespace datastruct { namespace linkedlist
 
   template<typename T>
   void LinkedList<T>::pop_front() {
-    throw std::runtime_error("Not implemented");
+    if(empty()) {
+      throw std::runtime_error("Empty list");
+    }
+
+    Node* tmp;
+    tmp = _head;
+    _head = _head->_next;
+    delete tmp;
+    --_size;
   }
 
   template<typename T>
   void LinkedList<T>::pop_tail() {
-    throw std::runtime_error("Not implemented");
+    if(empty()) {
+      throw std::runtime_error("Empty list");
+    }
+
+    Node* tmp = _head;
+    while(tmp->_next != NULL && tmp->_next->_next != NULL) {
+     tmp = tmp->_next;
+    }
+    Node* toBeRemoved = tmp->_next;
+    tmp->_next = NULL;
+    delete toBeRemoved;
+    --_size;
   }
 
   template<typename T>
@@ -216,12 +235,22 @@ namespace datastruct { namespace linkedlist
 
   template<typename T>
   uint32_t LinkedList<T>::find_position(const T& iData) const {
-    throw std::runtime_error("Not implemented");
+    size_t cnt(1);
+    Node *tmp = _head;
+
+    while(tmp != NULL) {
+      if(tmp->_data == iData) {
+        return cnt;
+      }
+      ++cnt;
+      tmp = tmp->_next;
+    }
+    return -1;
   }
 
   template<typename T>
   const bool LinkedList<T>::contains(const T& iData) const {
-    throw std::runtime_error("Not implemented");
+    return find_position(iData) != -1;
   }
 
 }}
