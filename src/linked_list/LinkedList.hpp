@@ -40,7 +40,7 @@ namespace datastruct { namespace linkedlist
     /**
      * Gets the first element, if exists
      */
-    T& front() const;
+    const T& front() const;
 
     /**
      * Gets the iPosition-th element, if exists
@@ -90,6 +90,33 @@ namespace datastruct { namespace linkedlist
   const bool LinkedList<T>::empty() const
   {
     return _size == 0;
+  }
+
+  template<typename T>
+  void LinkedList<T>::push_back(const T& iData)
+  {
+    Node *aNode = new Node(iData, NULL);
+    if(_head == NULL){
+      _head = aNode;
+    }
+    else {
+      Node *tmp;
+      tmp = _head;
+      while(tmp->_next != NULL) {
+        tmp = tmp->_next;
+      }
+      tmp->_next = aNode;
+    }
+    ++_size;
+  }
+
+  template<typename T>
+  const T& LinkedList<T>::front() const
+  {
+   if(empty()) {
+     throw std::runtime_error("Empty list");
+   }
+   return _head->_data;
   }
 
 }}
