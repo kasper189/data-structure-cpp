@@ -111,6 +111,13 @@ namespace datastruct { namespace linkedlist
   }
 
   template<typename T>
+  void LinkedList<T>::push_front(const T& iData) {
+    Node *aNode = new Node(iData, _head);
+    _head = aNode;
+    ++_size;
+  }
+
+  template<typename T>
   const T& LinkedList<T>::front() const {
    if(empty()) {
      throw std::runtime_error("Empty list");
