@@ -43,6 +43,12 @@ namespace datastruct { namespace linkedlist
     const T& front() const;
 
     /**
+     * Gets the last element, if exists
+     * Not optimized method, using a linear traversal
+     */
+    const T& tail() const;
+
+    /**
      * Gets the iPosition-th element, if exists
      */
     T& get_element(const uint32_t& iPosition) const;
@@ -64,13 +70,10 @@ namespace datastruct { namespace linkedlist
   template<typename T>
   LinkedList<T>::LinkedList()
   : _head(NULL), _size(0)
-  {
-
-  }
+  {}
 
   template<typename T>
-  LinkedList<T>::~LinkedList()
-  {
+  LinkedList<T>::~LinkedList() {
     Node *toBeDeletedNode;
     while (_head != NULL)
     {
@@ -81,20 +84,17 @@ namespace datastruct { namespace linkedlist
   }
 
   template<typename T>
-  size_t LinkedList<T>::size() const
-  {
+  size_t LinkedList<T>::size() const {
     return _size;
   }
 
   template<typename T>
-  const bool LinkedList<T>::empty() const
-  {
+  const bool LinkedList<T>::empty() const {
     return _size == 0;
   }
 
   template<typename T>
-  void LinkedList<T>::push_back(const T& iData)
-  {
+  void LinkedList<T>::push_back(const T& iData) {
     Node *aNode = new Node(iData, NULL);
     if(_head == NULL){
       _head = aNode;
@@ -111,12 +111,23 @@ namespace datastruct { namespace linkedlist
   }
 
   template<typename T>
-  const T& LinkedList<T>::front() const
-  {
+  const T& LinkedList<T>::front() const {
    if(empty()) {
      throw std::runtime_error("Empty list");
    }
    return _head->_data;
+  }
+
+  template<typename T>
+  const T& LinkedList<T>::tail() const {
+    if(empty()) {
+      throw std::runtime_error("Empty list");
+    }
+    Node* tmp = _head;
+    while(tmp->_next != NULL) {
+     tmp = tmp->_next;
+    }
+    return tmp->_data;
   }
 
 }}

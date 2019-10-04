@@ -120,11 +120,11 @@ int main(int argc, char **argv)
     auto default_printer = listeners.Release(listeners.default_result_printer());
 
     ConfigurableEventListener *listener = new ConfigurableEventListener(default_printer);
-    listener->showEnvironment = false;
-    listener->showTestCases = false;
-    listener->showTestNames = false;
-    listener->showSuccesses = false;
-    listener->showInlineFailures = false;
+    listener->showEnvironment = true;
+    listener->showTestCases = true;
+    listener->showTestNames = true;
+    listener->showSuccesses = true;
+    listener->showInlineFailures = true;
     listeners.Append(listener);
 
     return RUN_ALL_TESTS();
