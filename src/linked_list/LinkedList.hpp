@@ -230,7 +230,26 @@ namespace datastruct { namespace linkedlist
 
   template<typename T>
   void LinkedList<T>::pop_element(const T& iData) {
-    throw std::runtime_error("Not implemented");
+    if(!contains(iData)){
+      throw std::runtime_error("pop_element: element not found");
+    }
+    Node *tmp = _head;
+    Node *toBeDeleted;
+
+    if(_head != NULL && _head->_data == iData){
+     pop_front();
+     return;
+    }
+
+    while(tmp != NULL && tmp->_next != NULL) {
+      if(tmp->_next->_data == iData){
+        toBeDeleted = tmp->_next;
+        tmp->_next = tmp->_next->_next;
+        delete toBeDeleted;
+        --_size;
+        return;
+      }
+    }
   }
 
   template<typename T>

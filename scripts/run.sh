@@ -17,3 +17,4 @@ make
 
 echo "Running test"
 make test
+

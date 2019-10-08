@@ -283,3 +283,44 @@ TEST(LinkedListTest, NotFoundContains)
 
   ASSERT_FALSE(aList.contains(100));
 }
+
+TEST(LinkedListTest, PopFrontWithFind)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(10);
+
+  ASSERT_EQ(2, aList.size());
+
+  aList.pop_element(0);
+  ASSERT_EQ(1, aList.size());
+  ASSERT_EQ(10, aList.front());
+}
+
+TEST(LinkedListTest, PopTailWithFind)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(10);
+
+  ASSERT_EQ(2, aList.size());
+
+  aList.pop_element(10);
+  ASSERT_EQ(1, aList.size());
+  ASSERT_EQ(0, aList.front());
+}
+
+TEST(LinkedListTest, PopElement)
+{
+  LinkedList<int> aList;
+  aList.push_front(0);
+  aList.push_back(1);
+  aList.push_back(2);
+
+  ASSERT_EQ(3, aList.size());
+
+  aList.pop_element(1);
+  ASSERT_EQ(2, aList.size());
+  ASSERT_EQ(0, aList.front());
+  ASSERT_EQ(2, aList.tail());
+}
