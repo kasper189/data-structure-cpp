@@ -3,6 +3,7 @@
 
 The project aims at implementing a basic, not optimized version of data structures in cpp.
 * [Linked List](https://en.wikipedia.org/wiki/Linked_list)
+* [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
 
 ## Project dependencies
 The project uses:

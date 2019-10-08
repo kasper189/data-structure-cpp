@@ -1,0 +1,12 @@
+file(GLOB SRCS *.cpp)
+
+ADD_EXECUTABLE(STACK_TEST ${SRCS})
+
+TARGET_LINK_LIBRARIES(
+    STACK_TEST
+    STACK
+    libgtest
+)
+
+add_test(NAME STACK_TEST
+         COMMAND STACK_TEST)
