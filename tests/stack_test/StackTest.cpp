@@ -10,6 +10,13 @@ using datastruct::stack::Stack;
 
 TEST(StackTest, InitTest)
 {
-	Stack<std::string> aStack;
-	ASSERT_TRUE(true);
+	Stack<std::string> aStack(5);
+	ASSERT_TRUE(aStack.empty());
+}
+
+TEST(StackTest, InitSizeTest)
+{
+	Stack<std::string> aStack(5);
+	ASSERT_TRUE(aStack.empty());
+	ASSERT_EQ(0, aStack.size());
 }
