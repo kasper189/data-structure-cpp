@@ -9,10 +9,13 @@ The project aims at implementing a basic, not optimized version of data structur
 The project uses:
 * [cmake](https://cmake.org) to build and test the project
 * [Googletest](https://github.com/google/googletest) as Testing and Mocking Framework
+* [Valgrind](http://valgrind.org) as analysis tool
 
 Please ensure to install cmake before building the project, while Googletest will be automatically downloaded.
 
-### Mac os cmake installation
+## Mac os dependencies installation
+
+### CMake
 * download the latest version of cmake for MacOS from the [originale repo](https://cmake.org/download/)
 * install cmake on your laptop
 * if you use the terminal, please
@@ -21,7 +24,12 @@ Please ensure to install cmake before building the project, while Googletest wil
 export PATH=$PATH:/Applications/CMake.app/Contents/bin/
 ```
 
-### Build
+### Valgrind
+```bash
+brew install valgrind
+```
+
+## Build
 ```bash
 mkdir -p build
 cd build
@@ -29,9 +37,14 @@ cmake ..
 make
 ```
 
-### Run test
+## Run test
 ```bash
 make test
+```
+
+## Run test with valgrind
+```bash
+ctest -D ExperimentalMemCheck
 ```
 
 A [script](scripts/run.sh) is available to build and run tests.
