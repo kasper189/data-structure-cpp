@@ -9,5 +9,11 @@ endif()
 
 enable_testing()
 
+include (CTest)
+
+set( CTEST_MEMORYCHECK_COMMAND valgrind ) 
+set( CTEST_MEMORYCHECK_COMMAND_OPTIONS "--tool=callgrind -v" ) 
+
 add_subdirectory(src)
 add_subdirectory(tests)
+

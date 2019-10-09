@@ -17,3 +17,6 @@ make
 
 echo "Running test"
 make test
+
+echo "Running test with valgrind"
+ctest -D ExperimentalMemCheck
