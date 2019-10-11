@@ -13,7 +13,7 @@ namespace datastruct { namespace stack
 
   public:
     /** Constructor **/
-	Stack(const size_t& iSize);
+    Stack(const size_t& iSize);
 
     /** Destructor **/
     ~Stack();
@@ -43,11 +43,6 @@ namespace datastruct { namespace stack
      * Removes the element on top of the stack, if exists
      */
     void pop();
-
-    /**
-     * Swaps the contents of the two stacks
-     */
-    void swap(Stack<T>& ioOther);
 
   private:
     std::vector<T> _data;
@@ -82,22 +77,27 @@ namespace datastruct { namespace stack
 
   template<typename T>
   const T& Stack<T>::top() const {
-	throw std::runtime_error("Not implemented");
+    if(empty()) {
+      throw std::runtime_error("Empty stack");
+    }
+	  return _data[_size - 1];
   }
 
   template<typename T>
   void Stack<T>::push(const T& iData) {
-    throw std::runtime_error("Not implemented");
+    if(size() == _limit) {
+      throw std::runtime_error("Full stack");
+    }
+    _data[_size] = iData;
+    ++_size;
   }
 
   template<typename T>
   void Stack<T>::pop() {
-	throw std::runtime_error("Not implemented");
-  }
-
-  template<typename T>
-  void Stack<T>::swap(Stack<T>& ioOther) {
-    throw std::runtime_error("Not implemented");
+    if(empty()) {
+      throw std::runtime_error("Empty stack");
+    }
+    --_size;
   }
 
 }}
