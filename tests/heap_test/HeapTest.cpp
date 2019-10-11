@@ -10,5 +10,8 @@ using datastruct::heap::Heap;
 
 TEST(HeapTest, InitTest)
 {
-	ASSERT_TRUE(true);
+  Heap<int, std::greater<int>> aHeap(5, std::greater<int>());
+	ASSERT_TRUE(aHeap.empty());
+	ASSERT_EQ(0, aHeap.size());
 }
+
