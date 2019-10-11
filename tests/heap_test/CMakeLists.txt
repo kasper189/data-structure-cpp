@@ -1,0 +1,12 @@
+file(GLOB SRCS *.cpp)
+
+ADD_EXECUTABLE(HEAP_TEST ${SRCS})
+
+TARGET_LINK_LIBRARIES(
+    HEAP_TEST
+    HEAP
+    libgtest
+)
+
+add_test(NAME HEAP_TEST
+         COMMAND HEAP_TEST)
