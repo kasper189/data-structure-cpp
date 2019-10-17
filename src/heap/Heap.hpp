@@ -58,6 +58,8 @@ namespace datastruct { namespace heap
      * Top-down reheapify
      */
     void sink(size_t iIndex);
+
+    void exchange(const size_t iFirst, const size_t iSecond);
   };
 
   template<typename T, typename Compare>
@@ -83,27 +85,56 @@ namespace datastruct { namespace heap
 
   template<typename T, typename Compare>
   void Heap<T,Compare>::insert(const T& iElement){
-    throw std::runtime_error("Not implemented");
+    if (_size == _limit - 1) {
+      throw std::runtime_error("Full heap");
+    }
+    _data[++_size] = iElement;
+    swim(_size);
   }
 
   template<typename T, typename Compare>
   const T& Heap<T,Compare>::get_root() const {
-    throw std::runtime_error("Not implemented");
+    if(empty()) {
+      throw std::runtime_error("Empty heap");
+    }
+    return _data[1];
   }
 
   template<typename T, typename Compare>
   void Heap<T,Compare>::delete_root() {
-    throw std::runtime_error("Not implemented");
+    if (empty()) {
+      throw std::runtime_error("Empty heap");
+    }
+    T root = move(_data[1]);
+    exchange(1, _size--);
+    sink(1);
   }
 
   template<typename T, typename Compare>
   void Heap<T,Compare>::swim(size_t iIndex){
-    throw std::runtime_error("Not implemented");
+    size_t elementIndex = iIndex;
+    while (elementIndex > 1 && _comparator(_data[elementIndex / 2], _data[elementIndex])) {
+      exchange(elementIndex / 2, elementIndex);
+      elementIndex = elementIndex / 2;
+    }
   }
 
   template<typename T, typename Compare>
   void Heap<T,Compare>::sink(size_t iIndex) {
-    throw std::runtime_error("Not implemented");
+    while(2 * iIndex <= _size) {
+      size_t j(2 * iIndex);
+      if(j < _size && _comparator(_data[j], _data[j+1])) j++;
+      if (!_comparator(_data[iIndex], _data[j])) break;
+      exchange(iIndex, j);
+      iIndex = j;
+    }
+  }
+
+  template<typename T, typename Compare>
+  void Heap<T,Compare>::exchange(const size_t iFirst, const size_t iSecond) {
+   T tmp = move(_data[iFirst]);
+   _data[iFirst] = move(_data[iSecond]);
+   _data[iSecond] = move(tmp);
   }
 
 
