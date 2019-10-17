@@ -8,7 +8,7 @@ add_library(HEAP STATIC
     ${HEAP_SRCS}
 )
 
-target_link_libraries(HEAP)
+target_link_libraries(HEAP coverage_config)
 
 # Specify here the include directories exported
 # by this library

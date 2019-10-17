@@ -8,7 +8,7 @@ add_library(STACK STATIC
     ${STACK_SRCS}
 )
 
-target_link_libraries(STACK)
+target_link_libraries(STACK coverage_config)
 
 # Specify here the include directories exported
 # by this library

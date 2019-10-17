@@ -8,7 +8,7 @@ add_library(LINKED_LIST STATIC
     ${LINKED_LIST_SRCS}
 )
 
-target_link_libraries(LINKED_LIST)
+target_link_libraries(LINKED_LIST coverage_config)
 
 # Specify here the include directories exported
 # by this library
