@@ -12,11 +12,8 @@ namespace datastruct { namespace heap
   class Heap {
 
   public:
-    /** Constructor **/
-    Heap(size_t iSize, const Compare& iComparator);
-
     /** Destructor **/
-    ~Heap() {}
+    virtual ~Heap() {}
 
     /**
      * Inserts an element in the heap
@@ -38,6 +35,9 @@ namespace datastruct { namespace heap
     size_t _limit;
     size_t _size;
     std::vector<T> _data;
+
+    /** Constructor **/
+    Heap(size_t iSize, const Compare& iComparator);
 
     /**
      * Gets the heap root element, if exists
@@ -132,9 +132,9 @@ namespace datastruct { namespace heap
 
   template<typename T, typename Compare>
   void Heap<T,Compare>::exchange(const size_t iFirst, const size_t iSecond) {
-   T tmp = move(_data[iFirst]);
-   _data[iFirst] = move(_data[iSecond]);
-   _data[iSecond] = move(tmp);
+    T tmp = move(_data[iFirst]);
+    _data[iFirst] = move(_data[iSecond]);
+    _data[iSecond] = move(tmp);
   }
 
 
