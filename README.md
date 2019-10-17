@@ -1,6 +1,8 @@
 # Data Structure in CPP
 [![Build Status](https://travis-ci.com/kasper189/data-structure-cpp.svg?branch=master)](https://travis-ci.com/kasper189/data-structure-cpp)
 
+[![codecov](https://codecov.io/gh/kasper189/data-structure-cpp/branch/master/graph/badge.svg)](https://codecov.io/gh/kasper189/data-structure-cpp)
+
 The project aims at implementing a basic, not optimized version of data structures in cpp.
 * [Linked List](https://en.wikipedia.org/wiki/Linked_list)
 * [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
