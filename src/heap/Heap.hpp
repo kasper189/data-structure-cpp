@@ -5,6 +5,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <stdexcept>
+#include <utility>
 
 namespace datastruct { namespace heap
 {
@@ -105,7 +106,7 @@ namespace datastruct { namespace heap
     if (empty()) {
       throw std::runtime_error("Empty heap");
     }
-    T root = move(_data[1]);
+    T root = std::move(_data[1]);
     exchange(1, _size--);
     sink(1);
   }
@@ -132,9 +133,9 @@ namespace datastruct { namespace heap
 
   template<typename T, typename Compare>
   void Heap<T,Compare>::exchange(const size_t iFirst, const size_t iSecond) {
-    T tmp = move(_data[iFirst]);
-    _data[iFirst] = move(_data[iSecond]);
-    _data[iSecond] = move(tmp);
+    T tmp = std::move(_data[iFirst]);
+    _data[iFirst] = std::move(_data[iSecond]);
+    _data[iSecond] = std::move(tmp);
   }
 
 

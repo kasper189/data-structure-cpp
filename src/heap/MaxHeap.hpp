@@ -15,14 +15,14 @@ namespace datastruct { namespace heap
     virtual ~MaxHeap() {}
 
     /**
-     *
+     * Gets the maximum element, if exists
      */
     const T& get_max() const;
 
     /**
-     *
+     * Deletes the maximum element, if exists
      */
-    void delete_max(const T& iElement);
+    void delete_max();
 
   };
 
@@ -37,7 +37,7 @@ namespace datastruct { namespace heap
   }
 
   template<typename T>
-  void MaxHeap<T>::delete_max(const T& iElement) {
+  void MaxHeap<T>::delete_max() {
     Heap<T, std::less<T>>::delete_root();
   }
 
