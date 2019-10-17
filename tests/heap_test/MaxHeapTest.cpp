@@ -4,13 +4,13 @@
 #include <stdlib.h>
 #include <stdexcept>
 
-#include "Heap.hpp"
+#include "MaxHeap.hpp"
 
-using datastruct::heap::Heap;
+using datastruct::heap::MaxHeap;
 
-TEST(HeapTest, InitTest)
+TEST(MaxHeapTest, InitTest)
 {
-  Heap<int, std::greater<int>> aHeap(5, std::greater<int>());
+  MaxHeap<int> aHeap(5);
 	ASSERT_TRUE(aHeap.empty());
 	ASSERT_EQ(0, aHeap.size());
 }
