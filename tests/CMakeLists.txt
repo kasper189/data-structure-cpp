@@ -43,3 +43,4 @@ include_directories("${source_dir}/googletest/include"
 add_subdirectory(linked_list_test)
 add_subdirectory(stack_test)
 add_subdirectory(heap_test)
+add_subdirectory(binary_search_tree_test)

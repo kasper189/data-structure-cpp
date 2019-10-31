@@ -1,0 +1,12 @@
+file(GLOB SRCS *.cpp)
+
+ADD_EXECUTABLE(BST_TEST ${SRCS})
+
+TARGET_LINK_LIBRARIES(
+    BST_TEST
+    BST
+    libgtest
+)
+
+add_test(NAME BST_TEST
+         COMMAND BST_TEST)

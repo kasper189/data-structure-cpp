@@ -7,6 +7,7 @@ The project aims at implementing a basic, not optimized version of data structur
 * [Linked List](https://en.wikipedia.org/wiki/Linked_list)
 * [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
 * [Binary Heap](https://en.wikipedia.org/wiki/Binary_heap)
+* [Binary Search Tree](https://en.wikipedia.org/wiki/Binary_search_tree)
 
 ## Project dependencies
 The project uses:
