@@ -20,7 +20,7 @@ Please ensure to install cmake before building the project, while Googletest wil
 ## Mac os dependencies installation
 
 ### CMake
-* download the latest version of cmake for MacOS from the [originale repo](https://cmake.org/download/)
+* download the latest version of cmake for MacOS from the [original repo](https://cmake.org/download/)
 * install cmake on your laptop
 * if you use the terminal, please
 
