@@ -79,12 +79,12 @@ namespace datastruct { namespace bst
     std::string inorder_traversal(Node* iNode);
 
     /**
-     *
+     * Finds the element with the smallest key, if exists
      */
     const T& find_min(Node* iNode) const;
 
     /**
-     *
+     * Finds the element with the greatest key, if exists
      */
     const T& find_max(Node* iNode) const;
 
