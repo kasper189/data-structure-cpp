@@ -34,6 +34,24 @@ TEST(BSTTest, DoubleDecInsertAndTraverse)
   ASSERT_EQ(expectedOrder, aBST.get_as_string(datastruct::bst::Traversal::IN_ORDER));
 }
 
+TEST(BSTTest, DoubleDecInsertAndPreOdered)
+{
+  BST<int, int> aBST;
+  aBST.insert(5, 5);
+  aBST.insert(4, 4);
+  std::string expectedOrder("5:4:::");
+  ASSERT_EQ(expectedOrder, aBST.get_as_string(datastruct::bst::Traversal::PRE_ORDER));
+}
+
+TEST(BSTTest, DoubleDecInsertAndPostOdered)
+{
+  BST<int, int> aBST;
+  aBST.insert(5, 5);
+  aBST.insert(4, 4);
+  std::string expectedOrder("::4::5");
+  ASSERT_EQ(expectedOrder, aBST.get_as_string(datastruct::bst::Traversal::POST_ORDER));
+}
+
 TEST(BSTTest, InsertAndFindMin)
 {
   BST<int, int> aBST;
@@ -124,6 +142,4 @@ TEST(BSTTest, LinearRightInsertAndFind)
 
   ASSERT_EQ(4, aBST.find(4));
 }
-
-
 

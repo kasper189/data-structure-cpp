@@ -81,9 +81,19 @@ namespace datastruct { namespace bst
     BST<K,T>::Node* insert(Node* iNode, const K iKey, const T iValue);
 
     /**
-     * Traveres the the tree inorder
+     * Traveres the tree in inorder
      */
-    std::string inorder_traversal(Node* iNode);
+    std::string in_order_traversal(Node* iNode);
+
+    /**
+     * Traveres the tree in preorder
+     */
+    std::string pre_order_traversal(Node* iNode);
+
+    /**
+     * Traveres the tree in postorder
+     */
+    std::string post_order_traversal(Node* iNode);
 
     /**
      * Finds the element with the smallest key, if exists
@@ -239,26 +249,45 @@ namespace datastruct { namespace bst
   std::string BST<K,T>::get_as_string(const Traversal& iMode) {
     switch(iMode) {
       case IN_ORDER:
-        return inorder_traversal(_root);
+        return in_order_traversal(_root);
         break;
       case PRE_ORDER:
-        throw std::runtime_error("Not implemented");
-        //break;
+        return pre_order_traversal(_root);
+        break;
       case POST_ORDER:
-        throw std::runtime_error("Not implemented");
-        //break;
+        return post_order_traversal(_root);
+        break;
     }
   }
 
   template<typename K, typename T>
-  std::string BST<K,T>::inorder_traversal(Node* iNode) {
+  std::string BST<K,T>::in_order_traversal(Node* iNode) {
     if(iNode == NULL) {
       return "";
     }
-    std::string aLeft = inorder_traversal(iNode->_left);
-    std::string aRight = inorder_traversal(iNode->_right);
+    std::string aLeft = in_order_traversal(iNode->_left);
+    std::string aRight = in_order_traversal(iNode->_right);
     return aLeft + ":" + std::to_string(iNode->_value) + ":" + aRight;
   }
 
+  template<typename K, typename T>
+  std::string BST<K,T>::pre_order_traversal(Node* iNode) {
+    if(iNode == NULL) {
+      return "";
+    }
+    std::string aLeft = pre_order_traversal(iNode->_left);
+    std::string aRight = pre_order_traversal(iNode->_right);
+    return std::to_string(iNode->_value) + ":" + aLeft + ":" + aRight;
+  }
+
+  template<typename K, typename T>
+  std::string BST<K,T>::post_order_traversal(Node* iNode) {
+    if(iNode == NULL) {
+      return "";
+    }
+    std::string aLeft = post_order_traversal(iNode->_left);
+    std::string aRight = post_order_traversal(iNode->_right);
+    return aLeft + ":" + aRight + ":" + std::to_string(iNode->_value);
+  }
 
 }}
