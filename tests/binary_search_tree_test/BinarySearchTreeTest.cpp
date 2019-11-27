@@ -13,7 +13,7 @@ TEST(BSTTest, SingleInsertAndTraverse)
   BST<int, int> aBST;
   aBST.insert(5, 5);
   std::string expectedOrder(":5:");
-  ASSERT_EQ(expectedOrder, aBST.get_as_string());
+  ASSERT_EQ(expectedOrder, aBST.get_as_string(datastruct::bst::Traversal::IN_ORDER));
 }
 
 TEST(BSTTest, DoubleIncInsertAndTraverse)
@@ -22,7 +22,7 @@ TEST(BSTTest, DoubleIncInsertAndTraverse)
   aBST.insert(5, 5);
   aBST.insert(6, 6);
   std::string expectedOrder(":5::6:");
-  ASSERT_EQ(expectedOrder, aBST.get_as_string());
+  ASSERT_EQ(expectedOrder, aBST.get_as_string(datastruct::bst::Traversal::IN_ORDER));
 }
 
 TEST(BSTTest, DoubleDecInsertAndTraverse)
@@ -31,7 +31,7 @@ TEST(BSTTest, DoubleDecInsertAndTraverse)
   aBST.insert(5, 5);
   aBST.insert(4, 4);
   std::string expectedOrder(":4::5:");
-  ASSERT_EQ(expectedOrder, aBST.get_as_string());
+  ASSERT_EQ(expectedOrder, aBST.get_as_string(datastruct::bst::Traversal::IN_ORDER));
 }
 
 TEST(BSTTest, InsertAndFindMin)

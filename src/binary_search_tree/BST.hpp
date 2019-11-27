@@ -9,6 +9,13 @@
 
 namespace datastruct { namespace bst
 {
+  enum Traversal {
+    IN_ORDER,
+    PRE_ORDER,
+    POST_ORDER
+  };
+
+
   template<typename K, typename T>
   class BST {
 
@@ -47,7 +54,7 @@ namespace datastruct { namespace bst
     /**
      * Gets the tree as a string
      */
-    std::string get_as_string();
+    std::string get_as_string(const Traversal& iMode);
 
   private:
 
@@ -229,9 +236,18 @@ namespace datastruct { namespace bst
   }
 
   template<typename K, typename T>
-  std::string BST<K,T>::get_as_string() {
-    //TODO Add enum to choose traversal
-    return inorder_traversal(_root);
+  std::string BST<K,T>::get_as_string(const Traversal& iMode) {
+    switch(iMode) {
+      case IN_ORDER:
+        return inorder_traversal(_root);
+        break;
+      case PRE_ORDER:
+        throw std::runtime_error("Not implemented");
+        //break;
+      case POST_ORDER:
+        throw std::runtime_error("Not implemented");
+        //break;
+    }
   }
 
   template<typename K, typename T>
