@@ -78,6 +78,21 @@ namespace datastruct { namespace bst
      */
     std::string inorder_traversal(Node* iNode);
 
+    /**
+     *
+     */
+    const T& find_min(Node* iNode) const;
+
+    /**
+     *
+     */
+    const T& find_max(Node* iNode) const;
+
+    /**
+     * Finds an element, if exists
+     */
+    const T& find(Node* iNode, const K& iKey) const;
+
   };
 
   template<typename K, typename T>
@@ -132,19 +147,80 @@ namespace datastruct { namespace bst
 
   template<typename K, typename T>
   const T& BST<K,T>::find_min() const {
-    throw std::runtime_error("Not implemented");
+    if(_root == NULL) {
+      throw std::runtime_error("Empty BST.");
+    }
+    if(_root->_left != NULL) {
+      return find_min(_root->_left);
+    }
+    return _root->_value;
   }
 
+  template<typename K, typename T>
+  const T& BST<K,T>::find_min(Node* iNode) const {
+    if(iNode == NULL) {
+      throw std::runtime_error("Empty node in BST.");
+    }
+    if(iNode->_left != NULL) {
+      return find_min(iNode->_left);
+    }
+    return iNode->_value;
+  }
 
   template<typename K, typename T>
   const T& BST<K,T>::find_max() const {
-    throw std::runtime_error("Not implemented");
+    if(_root == NULL) {
+      throw std::runtime_error("Empty BST.");
+    }
+    if(_root->_right != NULL) {
+      return find_max(_root->_right);
+    }
+    return _root->_value;
   }
 
+  template<typename K, typename T>
+  const T& BST<K,T>::find_max(Node* iNode) const {
+    if(iNode == NULL) {
+      throw std::runtime_error("Empty node in BST.");
+    }
+    if(iNode->_right != NULL) {
+      return find_max(iNode->_right);
+    }
+    return iNode->_value;
+  }
 
   template<typename K, typename T>
   const T& BST<K,T>::find(const K& iKey) const {
-    throw std::runtime_error("Not implemented");
+    if(_root == NULL) {
+      throw std::runtime_error("Empty BST.");
+    }
+
+    if(_root->_key == iKey) {
+      return _root->_value;
+    }
+    else if(_root->_key > iKey) {
+      return find(_root->_left, iKey);
+    }
+    else {
+      return find(_root->_right, iKey);
+    }
+  }
+
+  template<typename K, typename T>
+  const T& BST<K,T>::find(Node* iNode, const K& iKey) const {
+    if(iNode == NULL) {
+      throw std::runtime_error("Key not found.");
+    }
+
+    if(iNode->_key == iKey) {
+      return iNode->_value;
+    }
+    else if(iNode->_key > iKey) {
+      return find(iNode->_left, iKey);
+    }
+    else {
+      return find(iNode->_right, iKey);
+    }
   }
 
   template<typename K, typename T>
